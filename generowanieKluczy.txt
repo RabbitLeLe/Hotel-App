@@ -1,0 +1,6 @@
+<?php
+
+$random_string = chr(rand(65,90)) . rand(0,9) . rand(0,9) . chr(rand(65,90)) . chr(rand(65,90)). rand(0,9); 
+echo $random_string;
+
+?>
