@@ -1,0 +1,45 @@
+CREATE TABLE Klient (
+id_klienta VARCHAR(6) PRIMARY KEY,
+emailKlienta VARCHAR(256) NOT NULL
+);
+
+CREATE TABLE Pokoj (
+id_pokoju INT(6) PRIMARY KEY,
+stan VARCHAR(256) NOT NULL,
+numerPokoju INT(3) NOT NULL,
+iloscLozek INT(1) NOT NULL,
+iloscOsob INT(2) NOT NULL
+);
+
+CREATE TABLE Pracownik (
+id_pracownika INT(6) PRIMARY KEY,
+imiePracownika VARCHAR(256) NOT NULL,
+nazwiskoPracownika VARCHAR(256) NOT NULL,
+stanowisko VARCHAR(256) NOT NULL,
+telefonPracownika INT(9) NOT NULL
+);
+
+CREATE TABLE Rezerwacja (
+id_rezerwacji INT(6) PRIMARY KEY,
+liczbaOsob INT(2) NOT NULL,
+dzienPrzyjazdu DATE NOT NULL,
+dzienOdjazdu DATE NOT NULL,
+uslugiDodatkowe VARCHAR(256) NOT NULL
+);
+
+
+
+--polaczenie z tablica Klient
+ALTER TABLE Rezerwacja
+ADD _id_klienta VARCHAR(6),
+ADD FOREIGN KEY (_id_klienta) REFERENCES Klient(id_klienta);
+
+--polaczenie z tablica Pokoj
+ALTER TABLE Rezerwacja
+ADD _id_pokoju INT(6),
+ADD FOREIGN KEY (_id_pokoju) REFERENCES Pokoj(id_pokoju);
+
+--polaczenie z tablica Pracownik
+ALTER TABLE Rezerwacja
+ADD _id_pracownika INT(6),
+ADD FOREIGN KEY (_id_pracownika) REFERENCES Pracownik(id_pracownika);
