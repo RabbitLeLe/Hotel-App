@@ -1,0 +1,38 @@
+INSERT INTO Klient VALUES
+('HG3RBJ', 'tajemniczy1@gmail.com'),
+('2FG45J', 'tajemnicza2@o2.pl'),
+('11FGE4', 'anna47@gmail.com'),
+('KKJ74P', 'mareczek11@onet.pl');
+
+INSERT INTO Pokoj VALUES
+(121, 'dobry',121,3,3),
+(122, 'bardzo-dobry',122,5,7),
+(123, 'przyzwoity',123,2,4),
+(124, 'do-remontu',124,2,2);
+
+INSERT INTO Pracownik VALUES
+(113, 'Adam','Nowak','recepcjonista',608124589),
+(133, 'Michal','Adams', 'hydraulik',539267998),
+(141, 'Ana','Klova', 'sprzataczka', 668897471),
+(12, 'Ewa', 'Paczylo', 'kucharka',981824562);
+
+INSERT INTO Praciwnik VALUES
+(312411, 2,	'2018-12-02','2018-12-14','brak'),
+(312417, 6,	'2018-12-22','2019-01-02','brak');
+
+
+ALTER TABLE Rezerwacja
+ADD _id_klienta VARCHAR(6),
+ADD FOREIGN KEY (_id_klienta) REFERENCES Klient(id_klienta);
+
+UPDATE Rezerwacja
+SET _id_klienta = 'FGR132';
+
+ALTER TABLE Rezerwacja
+ADD _id_pokoju INT(6),
+ADD FOREIGN KEY (_id_pokoju) REFERENCES Pokoj(id_pokoju);
+
+
+ALTER TABLE Rezerwacja
+ADD _id_pracownika INT(6),
+ADD FOREIGN KEY (_id_pracownika) REFERENCES Pracownik(id_pracownika);
