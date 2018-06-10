@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pl">
+<html>
+	<head>
+		<meta charset="utf-8" />
+		
+		<style>
+			body
+			{
+				background-color: #222222;
+				font-size: 24px;
+				color: white;
+			}
+			.leftSquare
+			{
+				width: 300px;
+				float: left;
+	
+			}
+			.rightSquare
+			{
+			    padding-left: 50px;
+				width: 700px;
+				height: auto;
+				float: left;
+				display: block;
+    margin-left: auto;
+    margin-right: auto;
+	
+			}
+			
+			.rightSquare img
+			{
+			    
+				width: 700px;
+				max-height: 500px;
+				float: left;
+				display: block;
+    margin-left: auto;
+    margin-right: auto;
+	
+			}
+						
+			#scroll
+			{
+				width: 800px;
+				height: auto;
+
+				position: fixed;
+				right: 100px;
+				
+			}
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+		
+		<script type="text/javascript">
+		
+	
+
+$(function() {
+  var eTop = $('#element').offset().top; //get the offset top of the element
+  log(eTop - $(window).scrollTop()); //position of the ele w.r.t window
+
+  $(window).scroll(function() { //when window is scrolled
+    log(eTop - $(window).scrollTop());
+  });
+});
+		
+	</script>	
+		
+		
+		<script type="text/javascript">
+		
+			var numer = Math.floor(Math.random()*5)+1;
+			
+			var timer1 = 0;
+			var timer2 = 0;
+			
+			function ustawslajd(nrslajdu)
+			{
+				clearTimeout(timer1);
+				clearTimeout(timer2);
+				numer = nrslajdu - 1;
+				
+				schowaj();
+				setTimeout("zmienslajd()", 500);
+				
+			}
+			
+			function schowaj()
+			{
+				$("#slider").fadeOut(500);
+			}
+		
+			function zmienslajd()
+			{
+				numer++; if (numer>5) numer=1;
+				
+				var plik = "<img src=\"img/p" + numer + ".jpg\" border=\"5\"/>";
+				
+				document.getElementById("slider").innerHTML = plik;
+				$("#slider").fadeIn(500);
+				
+				timer1 = setTimeout("zmienslajd()", 5000);
+				timer2 = setTimeout("schowaj()", 4500);
+			
+			}
+			
+		</script>
+		
+	</head>
+	<body onload="zmienslajd()">
+	
+	<div class="leftSquare">
+			
+				
+				
+			<span onclick="ustawslajd(1)" >
+				<img src="img/p1.jpg" width="280" border="5"> 
+			</span>
+				&nbsp &nbsp
+			<span onclick="ustawslajd(2)" >
+				<img src="img/p2.jpg" width="280" border="5"> 
+			</span>
+			&nbsp &nbsp
+			<span onclick="ustawslajd(3)" >
+				<img src="img/p3.jpg" width="280" border="5"> 
+			</span>
+			&nbsp &nbsp
+			<span onclick="ustawslajd(4)" >
+				<img src="img/p4.jpg" width="280" border="5"> 
+			</span>
+			&nbsp &nbsp
+			<span onclick="ustawslajd(5)" >
+				<img src="img/p5.jpg" width="280" border="5"> 
+			</span>
+			
+				
+				
+	</div>
+<div id="scroll">		
+	<div class="rightSquare">	
+		<div id="slider"></div>
+		<div id="log"></div>
+</div>
+
+
+	
+	</body>
+</html>
