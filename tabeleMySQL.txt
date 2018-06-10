@@ -1,30 +1,33 @@
 CREATE TABLE Klient (
-id_klienta VARCHAR(6) PRIMARY KEY,
+id_klienta VARCHAR(6),
 emailKlienta VARCHAR(256) NOT NULL
 );
 
 CREATE TABLE Pokoj (
-id_pokoju INT(6) PRIMARY KEY,
+id_pokoju INT(6) NOT NULL AUTO_INCREMENT,
 stan VARCHAR(256) NOT NULL,
 numerPokoju INT(3) NOT NULL,
 iloscLozek INT(1) NOT NULL,
-iloscOsob INT(2) NOT NULL
+iloscOsob INT(2) NOT NULL,
+PRIMARY KEY (id_pokoju)
 );
 
 CREATE TABLE Pracownik (
-id_pracownika INT(6) PRIMARY KEY,
+id_pracownika INT(6) NOT NULL AUTO_INCREMENT,
 imiePracownika VARCHAR(256) NOT NULL,
 nazwiskoPracownika VARCHAR(256) NOT NULL,
 stanowisko VARCHAR(256) NOT NULL,
-telefonPracownika INT(9) NOT NULL
+telefonPracownika INT(9) NOT NULL,
+PRIMARY KEY (id_pracownika)
 );
 
 CREATE TABLE Rezerwacja (
-id_rezerwacji INT(6) PRIMARY KEY,
+id_rezerwacji INT(6) NOT NULL AUTO_INCREMENT,
 liczbaOsob INT(2) NOT NULL,
 dzienPrzyjazdu DATE NOT NULL,
 dzienOdjazdu DATE NOT NULL,
-uslugiDodatkowe VARCHAR(256) NOT NULL
+uslugiDodatkowe VARCHAR(256) NOT NULL,
+PRIMARY KEY (id_rezerwacji)
 );
 
 
